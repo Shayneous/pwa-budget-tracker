@@ -19,3 +19,13 @@ request.onsuccess = function(event) {
 request.onerror = function(event) {
     console.log(event.target.errorCode);
 };
+
+
+function updateRecord(record) {
+
+    const transaction = db.transaction(['add_transaction'], 'read_write');
+
+    const  budgetObjectStore = transaction.objectStore('add_transaction');
+
+    budgetObjectStore.add(record);
+}; 
